@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "update-shrinkwrap",
+			"path": "static/bootstrap-3.3.7",
+			"problemMatcher": [],
+			"label": "npm: update-shrinkwrap - static/bootstrap-3.3.7",
+			"detail": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json"
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{%  extends 'dashboard_layout.html' %}
+
+{% block dashboard_contents %}
+
+
+  <h1 class="sub-header">Crimes</h1>
+  <div class="table-responsive">
+    {% if crime_data !="Empty": %}
+    <a href="add_crime" class="btn btn-success btn-lg">Add Crime</a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Crime ID</th>
+          <th>Crime Type</th>
+          <th></th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in crime_data: %}
+          <tr>
+            <td>{{ d.crime_id }}</td>
+            <td>{{ d.crime_type.title() }}</td>
+            <td><a href="edit_crime/{{ d.crime_id }}"  class="btn btn-primary pull-right">Edit</a></td>
+            <td><button  class="btn btn-danger" onclick="return confirm_delete('{{d.crime_id}}');">Delete</button></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <script type="text/javascript">
+      function confirm_delete(id)
+      {
+        if(confirm("Do you really want to delete this record ?"))
+        {
+          window.location.replace("/delete_crime/"+id)
+
+        }
+        else {
+          return false;
+        }
+      }
+    </script>
+    {% else: %}
+    <h2 class="alert alert-danger">No crimes available</h2>
+    {% endif %}
+  </div>
+
+
+
+  <h1 class="sub-header alert-Danger">Deleted Crime</h1>
+  <div class="table-responsive">
+    {% if crime_deleted != "Empty":%}
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Crime ID</th>
+          <th>Crime Type</th>
+          <th></th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for d1 in crime_deleted: %}
+          <tr>
+            <td>{{ d1.crime_id }}</td>
+            <td>{{ d1.crime_type.title() }}</td>
+            <td><a href="edit_crime/{{ d1.crime_id }}"  class="btn btn-primary pull-right">Edit</a></td>
+            <td><a href="restore_crime/{{ d1.crime_id }}"  class="btn btn-success">Restore</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else: %}
+    <h2 class="alert alert-danger">No deleted crimes available</h2>
+    {% endif %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE <html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    {% include 'includes/_flash-message.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h2 class="panel-title">Enter received OTP Here</h2>
+                      </div>
+                      <div class="panel-body">
+                              <form method="POST" action="" role="form">
+                                <label>Enter OTP:</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="otp" value="{{request.form.otp}}"  width="10" maxlength="6"/>
+                                </div>
+                                <div class="form-group">
+                                    <input  class="btn btn-lg btn-danger btn-block" type="submit" name="submit" value="Verify">
+                                </div>
+
+                            </form>
+                      </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

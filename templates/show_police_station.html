@@ -1,0 +1,5 @@
+<select name="{{div_type}}_police_station" class="form-control">
+  {% for p in police_station_data: %}
+  <option value="{{p.police_station_id}}">{{p.police_station_name}}</option>
+  {% endfor %}
+</select>

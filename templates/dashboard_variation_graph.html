@@ -1,0 +1,185 @@
+{% if session['user_role'] == 'administrator':%}
+  {%  extends 'dashboard_layout.html' %}
+{% else: %}
+  {%  extends 'user_dashboard_layout.html' %}
+{% endif %}
+
+{% block dashboard_contents %}
+<div class="row">
+  <form action="" method="post" role="form">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>To See the Variation graph between Crime Type and Criminal age click</label>
+          <input type="submit" name="submit" value="See Graph Crime Type And Criminal Age" class="btn btn-lg btn-success"/>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Variation Graph between Crime Type and No of Times Crime click</label>
+          <input type="submit" name="submit" value="See Graph Crime Type And Number of Times" class="btn btn-lg btn-success"/>
+        </div>
+      </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="table-responsive">
+      {% if first_total_crime !=0: %}
+      <table class="table table-hover">
+        <thead>Criminal Age Analysis between {{first_year}}</thead>
+        <tr>
+          <th>Crime having criminal age</th>
+          <th>percentage</th>
+        </tr>
+        <tr class="bg-danger">
+          <td>Criminal age less than 18</td>
+          <td>{{ (first_criminal_age_under18/first_total_crime)*100 }}</td>
+        </tr>
+        <tr class="bg-info">
+          <td>Criminal age between 18 and 25</td>
+          <td>{{ (first_criminal_age_18_25/first_total_crime)*100  }}</td>
+        </tr>
+        <tr class="bg-warning">
+          <td>Criminal age greater than 25</td>
+          <td>{{ (first_criminal_age_beyond_25/first_total_crime)*100 }}</td>
+        </tr>
+      </table>
+      {% endif %}
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive">
+      {% if second_total_crime !=0: %}
+      <table class="table table-hover">
+        <thead>Criminal Age Analysis between {{second_year}}</thead>
+        <tr>
+          <th>Crime having criminal age</th>
+          <th>percentage</th>
+        </tr>
+        <tr class="bg-danger">
+          <td>Criminal age less than 18</td>
+          <td>{{ (second_criminal_age_under18/second_total_crime)*100 }}</td>
+        </tr>
+        <tr class="bg-info">
+          <td>Criminal age between 18 and 25</td>
+          <td>{{ (second_criminal_age_18_25/second_total_crime)*100  }}</td>
+        </tr>
+        <tr class="bg-warning">
+          <td>Criminal age greater than 25</td>
+          <td>{{ (second_criminal_age_beyond_25/second_total_crime)*100 }}</td>
+        </tr>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+  <div>
+
+    {% if first_total_crime !=0 and second_total_crime !=0: %}
+    <h2>Conclusions:</h2>
+    <ul>
+      {% if second_criminal_age_under18 > first_criminal_age_under18 %}
+      <li class="bg-danger"> Crime Trend is increasing among the TEEN</li>
+      {% endif %}
+      {% if second_criminal_age_18_25 > first_criminal_age_18_25 %}
+      <li class="bg-danger"> Crime Trend is increasing among the agegoup 18 and 25/li>
+      {% endif %}
+      {% if second_criminal_age_beyond_25 > first_criminal_age_beyond_25 %}
+      <li class="bg-danger"> Crime Trend is increasing among the Adults having agegoup beyond 25</li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="table-responsive">
+      {% if first_crime_count != {} and max1 !=0: %}
+      <table class="table table-hover">
+        <thead>Crime Analysis between {{first_year}}</thead>
+        <tr>
+          <th>Crime Type</th>
+          <th>Number of times</th>
+          <th>Attention Level</th>
+        </tr>
+        {% for i,j in first_crime_count: %}
+          {% if j ==max1: %}
+          <tr class="bg-danger">
+            <td>{{i}}</td>
+            <td>{{ j }}</td>
+            <td>High</td>
+          </tr>
+          {% elif j<max1 and j>15: %}
+            <tr class="bg-info">
+              <td>{{i}}</td>
+              <td>{{ j }}</td>
+              <td>Moderate</td>
+            </tr>
+          {% else: %}
+          <tr class="bg-warning">
+            <td>{{i}}</td>
+            <td>{{ j }}</td>
+            <td>Low</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive">
+      {% if second_crime_count !={} and max2 !=0: %}
+      <table class="table table-hover">
+        <thead>Crime Analysis between {{second_year}}</thead>
+        <tr>
+          <th>Crime Type</th>
+          <th>Number of times</th>
+          <th>Attention Level</th>
+        </tr>
+        {% for i,j in second_crime_count: %}
+          {% if j ==max2: %}
+          <tr class="bg-danger">
+            <td>{{i}}</td>
+            <td>{{ j }}</td>
+            <td>High</td>
+          </tr>
+          {% elif j<max1 and j>15: %}
+            <tr class="bg-info">
+              <td>{{i}}</td>
+              <td>{{ j }}</td>
+              <td>Moderate</td>
+            </tr>
+          {% else: %}
+          <tr class="bg-warning">
+            <td>{{i}}</td>
+            <td>{{ j }}</td>
+            <td>Low</td>
+          </tr>
+          {% endif %}
+
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+  <div class="">
+    {% if max1!=0 and max2!=0%}
+    <h2>Conclusions:</h2>
+    <ul>
+      {% if max2>max1:  %}
+      <li>On Average in the last five years the crime has been increased</li>
+      {% else:%}
+      <li>However in last five years the crime rate has been decreased</li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% if session['user_role'] == 'administrator':%}
+  {%  extends 'dashboard_layout.html' %}
+{% else: %}
+  {%  extends 'user_dashboard_layout.html' %}
+{% endif %}
+
+{% block dashboard_contents %}
+<div class="dashboard_yearwise_graph_analysis_contents">
+  <div class="row">
+    <div class="table-responsive col-md-6">
+      <form name="graph_generate_form" action="" method="post" role="form">
+      <table class="table table-hover" border="0">
+        <thead>
+          <tr>
+            <th>SELECT year for which Graph is to be generated :</th>
+            <td>
+                <select class="form-control" data-width="auto" name="year_graph" title="Select Year" id="year_graph">
+                  <option value="1990">1990</option>
+                  <option value="1991">1991</option>
+                  <option value="1992">1992</option>
+                  <option value="1993">1993</option>
+                  <option value="1994">1994</option>
+                  <option value="1995">1995</option>
+                  <option value="1996">1996</option>
+                  <option value="1997">1997</option>
+                  <option value="1998">199</option>
+                  <option value="1999">199</option>
+                  <option value="2000">2000</option>
+                  <option value="2001">2001</option>
+                  <option value="2002">2002</option>
+                  <option value="2003">2003</option>
+                  <option value="2004">2004</option>
+                  <option value="2005">2005</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" class="btn-success btn-lg" name="see_graph" value="See Graph">
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {% if number_times_crime != [] and total_crime !=0: %}
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>{{year}}{{" Crime Analysis"}}</thead>
+            <tr>
+              <th>Name of Crime</th>
+              <th>Percentage (of total)</th>
+              <th>Attention Level</th>
+           </tr>
+
+           {% for i,j in pair:%}
+           {% if max_value == j: %}
+             <tr class="alert-danger">
+           {% elif ((j*100)/total_crime)>20 and j< max_value: %}
+            <tr class="alert-warning">
+            {% else %}
+            <tr class="alert-info">
+            {% endif %}
+              <td>{{i}}</td>
+              <td>{{(j*100)/total_crime}}</td>
+              {% if max_value == j: %}
+                <td>High</td>
+              {% elif j< max_value and ((j*100)/total_crime)>20: %}
+               <td>Moderate</td>
+               {% else %}
+               <td>Low</td>
+               {% endif %}
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      {% if previous_total_crime != 0: %}
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>{{previous_year}}{{" Crime Analysis"}}</thead>
+            <tr>
+              <th>Name of Crime</th>
+              <th>Percentage (of total)</th>
+              <th>Attention Level</th>
+           </tr>
+
+           {% for i,j in previous_pair:%}
+           {% if previous_max_value == j: %}
+             <tr class="alert-danger">
+           {% elif ((j*100)/previous_total_crime)>20 and j< previous_max_value: %}
+            <tr class="alert-warning">
+            {% else %}
+            <tr class="alert-info">
+            {% endif %}
+              <td>{{i}}</td>
+              <td>{{(j*100)/previous_total_crime}}</td>
+              {% if previous_max_value == j: %}
+                <td>High</td>
+              {% elif j< previous_max_value and ((j*100)/previous_total_crime)>20: %}
+               <td>Moderate</td>
+               {% else %}
+               <td>Low</td>
+               {% endif %}
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+      {% endif %}
+    </div>
+    </div>
+
+    <!--Conclusion----->
+    <div class="row">
+      {% if total_crime !=0%}
+      <h2>Conclusions:</h2>
+      <ul type="disc" >
+        <li>Following crimes are increasing tremendously
+          <ul type="square">
+          {% for s in max_index:%}
+          <li>{{s}}</li>
+          {% endfor %}
+          </ul>
+        </li>
+        <li>There should be some prevention actions(s) take so that the rate of increasing of the above crime can be reduced.</li>
+        <li>Otherwise in future it may be increased in plenty.</li>
+      </ul>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+
+{% endblock %}

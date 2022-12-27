@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crime rate Predition</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!--<link style="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">-->
+  <link rel="stylesheet" href="static/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/bootstrap-3.3.7/dist/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/bootstrap-3.3.7/dist/css/footer.css">
+</head>
+<body style="background-color:#f4f6f6;">
+<div>
+  <div class="navbar-wrapper" >
+        <div class="container-fluid">
+            {% include 'includes/_navbar.html' %}
+            {% include 'includes/_flash-message.html' %}
+            {% block body %}
+            {% endblock %}
+        </div>
+  </div>
+
+<!-- jQuery library -->
+<script src="static/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+ <script src="static/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+</div>
+</body>
+</html>

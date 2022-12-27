@@ -1,0 +1,239 @@
+/*--------------------*/
+/* WHY CHOOSE US */
+/*--------------------*/
+
+#whychooseSection{
+	background-color: #f7f7f7;
+	float: left;
+	display: inline;
+	width: 100%;
+	padding: 10px 0px;
+}
+.whyChoose-left {
+  display: inline;
+  float: left;
+  margin-top: 10px;
+  border: 5px solid #fff;
+  height: 320px;
+  width: 460px;
+}
+
+
+.whyChoose-right{
+	float: left;
+	margin-top: 10px;
+	display: inline;
+	width: 100%;
+	padding: 0px 20px;
+}
+.whyChoose-right .media{
+	margin-bottom: 20px;
+}
+.media-icon {
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+	color: #fff;
+	display: inline-block;
+	font-size: 25px;
+	height: 68px;
+	line-height: 55px;
+	margin-right: 15px;
+	padding: 5px 10px;
+	text-align: center;
+	width: 68px;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s
+}
+.whyChoose-right .media-heading{
+	font-size: 22px;
+	line-height: 1.3em;
+	padding-bottom: 6px;
+}
+.whyChoose-right .media-body > p {
+  color: #6d6d6d;
+  font-size: 15px;
+  line-height: 1.4em;
+}
+.whyChoose-right .media .media-icon{
+	color: #FFC300;
+
+	background-color: #fff;
+}
+.whyChoose-right .media:hover .media-icon{
+	background-color:black ;
+	color:white;
+}
+
+
+
+
+/***************************************
+contact us
+***************************************/
+.space {
+    margin-top: 40px;
+}
+.btn-form, .btn-form:hover, .btn-form:focus {
+    background-color: #0cb8b6;
+    color: #fff;
+    border-radius: 1px;
+    padding: 10px 20px;
+}
+.br-radius-zero {
+    border-radius: 0px;
+}
+.form-control{
+	height: 40px;
+}
+
+.validation {
+    color: red;
+    display:none;
+    margin: 0 0 20px;
+    font-weight:400;
+    font-size:13px;
+}
+
+#sendmessage {
+    color: green;
+    border:1px solid green;
+    display:block;
+    text-align:center;
+    padding:15px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+#errormessage {
+    color: red;
+    display:block;
+    border:1px solid red;
+    text-align:center;
+    padding:15px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+#sendmessage.show, #errormessage.show, .show {
+	display:block;
+}
+
+
+
+
+/***************************************
+footer
+***************************************/
+#footer{
+	background-color: black;
+}
+.ftr-tle {
+    height: 25px;
+}
+.white{
+  color:magenta;
+}
+.info-sec {
+    color: #fff;
+}
+.quick-info{
+  list-style: none;
+}
+.info-sec .quick-info li i {
+    font-size: 8px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: left;
+}
+.social-icon{
+  list-style: none;
+}
+.social-icon a {
+
+    color: white;
+}
+.social-icon li {
+
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-right: 5px;
+}
+.bglight-blue {
+    background-color: #3498DB;
+}
+.bgred {
+    background-color: #E74C3C;
+}
+.bgdark-blue {
+    background-color: #2C3E50;
+}
+.bglight-blue {
+    background-color: #3498DB;
+}
+.top-footer {
+    padding: 20px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-line {
+    padding: 10px 0px;
+    color: #fff;
+}
+
+.footer-line a {
+    color: #0CB8B6;
+}
+
+.quick-info li a{
+    color: #fff;
+}
+.site-link, .site-link:hover, .site-link:focus
+{
+    color: #0cb8b6;
+    text-transform: none;
+}
+@media (min-width: 551px) and (max-width: 980px){
+
+}
+@media (min-width: 220px) and (max-width: 551px){
+    .testi-info{
+        margin-bottom: 20px;
+    }
+    .marb20{
+        margin-top: 30px;
+    }
+    h2{
+        font-size: 24px;
+        line-height: 1.2;
+    }
+    .section-title{
+        margin-bottom: 30px;
+    }
+    .medi-info {
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    }
+    .service-info{
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .caption h3 {
+    font-size: 14px;
+    }
+    .caption p{
+    font-size: 12px;
+    padding-bottom: 5px;
+    }
+    .caption ul li a i{
+        font-size: 14px;
+    }
+    .banner-text h1{
+        font-size: 24px;
+    }
+}

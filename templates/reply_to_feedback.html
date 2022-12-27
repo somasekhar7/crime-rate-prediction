@@ -1,0 +1,36 @@
+{%  extends 'dashboard_layout.html' %}
+
+{% block dashboard_contents %}
+<div class="container">
+  <div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">Reply to Feedback</h2>
+      </div>
+      <div class="panel-body">
+        <form action="" method="post" role="form">
+          <div class="form-group">
+            <label>Replied to:</label>
+            <input type="email" name="email" value="{{data['email']}}" class="form-control" disabled>
+          </div>
+          <div class="form-group">
+            <label>Subject:</label>
+            <input type="text" name="subject" value="Response for your {{data['subject']}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Message:</label>
+            <textarea class="form-control" name="msg" required></textarea>
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="submit" name="submit" value="Send Message" class="btn btn-success btn-lg btn-block">
+            <a href="/dashboard_feedback" class="btn btn-lg btn-block btn-danger">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{% endblock %}

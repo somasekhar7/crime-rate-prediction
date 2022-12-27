@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crime Rate Prediction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/dist/css/dashboard.css">
+    <link href="/static/bootstrap-3.3.7/dist/fonts/font-awesome.css" rel="stylesheet">
+
+    <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+  </head>
+  <body>
+  <div class="navbar-wrapper" >
+
+
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">CRIME RATE PREDICTION</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li class="active"><a href="user_dashboard"><span></span> Dashboard</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="profile"><span class="glyphicon glyphicon-envelope"></span> Message</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-user"></span> {{session['username']}}<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                      <li><a href="profile"><span class="glyphicon glyphicon-"></span> Settings</a></li>
+                      <li class="divider"></li>
+                      <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="user_dashboard">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+
+
+            <li class="divider" style="color:yellow;"></li>
+            <li><a href="/dashboard_crimes_records">Crimes Records</a></li>
+            <li><a href="/dashboard_graph_analysis">Cluster Analysis</a></li>
+            <li><a href="/dashboard_yearwise_graph_analysis">Yearwise Graph Analysis</a></li>
+            <li><a href="/dashboard_crimewise_graph_analysis">Crimewise Graph Analysis</a></li>
+            <li><a href="/dashboard_variation_graph">Variation Graph Analysis</a></li>
+            <li><a href="/dashboard_bar_graph">Bar Graph Analysis</a></li>
+            <li><a href="/dashboard_pi_graph">Pi-chart Analysis</a></li>
+            <li><a href="/user_feedback">Give Feedback</a></li>
+          </ul>
+
+        </div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% include 'includes/_flash-message.html' %}
+        {% block dashboard_contents %}
+        {% endblock %}
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+        <!-- jQuery library -->
+        <script src="/static/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+         <script src="/static/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+         <script src="/static/bootstrap-3.3.7/dist/js/holder.min.js"></script>
+
+  </div>
+</body>
+</html>

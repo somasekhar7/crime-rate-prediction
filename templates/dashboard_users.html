@@ -1,0 +1,76 @@
+{%  extends 'dashboard_layout.html' %}
+
+{% block dashboard_contents %}
+
+
+  <h1 class="sub-header">Users of the System</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr class="alert alert-danger">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Aadhar</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in users: %}
+          <tr>
+            <td>{{ d.name.title() }}</td>
+            <td>{{ d.email }}</td>
+            <td>{{ d.mobile }}</td>
+            <td>{{ d.aadhar }}</td>
+            <td>{{ d.role }}</td>
+            <td>{{ d.status }}</td>
+            <td>
+              <a href="edit_user/{{ d.id }}"
+                {% if d.role == 'administrator': %}
+                  class="btn btn-primary pull-right disabled"
+                {% else: %}
+                  class="btn btn-primary pull-right"
+                {% endif %}  role="button" >
+                Edit
+              </a>
+            </td>
+            <td>
+              <button
+                  {% if d.role == 'administrator': %}
+                   disabled class="btn btn-danger disabled"
+                  {% elif d.status == 0: %}
+                    class="btn btn-success"-
+                  {% else : %}
+                    class="btn btn-danger"
+                  {% endif %}
+                  onclick="return confirm_deacvtivate('{{ d.id }}');">
+                  {% if d.status == 1: %}
+                    Deactivate
+                  {% else:%}
+                      Activate
+                  {% endif %}
+              </button></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <script type="text/javascript">
+      function confirm_deacvtivate(id)
+      {
+        if(confirm("Do you really want ?"))
+        {
+          window.location.replace("/deactivate_activate_user/"+id)
+
+        }
+        else {
+          return false;
+        }
+      }
+    </script>
+
+  </div>
+{% endblock %}

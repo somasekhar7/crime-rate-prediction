@@ -1,0 +1,44 @@
+{%  extends 'dashboard_layout.html' %}
+
+{% block dashboard_contents %}
+
+
+  <h1 class="sub-header">Feedback Messages</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr class="alert alert-danger">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in data: %}
+          <tr>
+            <td>{{ d['name'].title() }}</td>
+            <td>{{ d['email'] }}</td>
+            <td>{{ d['subject'] }}</td>
+            <td>{{ d['messaage'] }}</td>
+            <td>{{ d['date_feedback'] }}</td>
+
+
+            <td>
+              <a href="reply_to_feedback/{{ d.id }}"
+                class="btn btn-success"  role="button" >
+                Reply
+              </a>
+            </td>
+
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+  </div>
+{% endblock %}

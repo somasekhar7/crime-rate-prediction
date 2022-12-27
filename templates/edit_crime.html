@@ -1,0 +1,35 @@
+{% extends 'dashboard_layout.html' %}
+
+{% block dashboard_contents %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title"> Add New Crime</h2>
+        </div>
+        <div class="panel-body">
+          <form action="" method="post" role="form">
+            <div class="form-group">
+              <label>Crime ID:</label>
+              <input type="text" class="form-control" name="crime_id" value="{{crime_data['crime_id']}}" disabled/>
+            </div>
+            <div class="form-group">
+              <label>Crime Type:</label>
+              <input type="text" class="form-control" name="crime_type" value="{{crime_data['crime_type']}}"/>
+            </div>
+            <div class="form-group">
+              <label></label>
+              <input type="submit" class="btn btn-success btn-lg btn-block" name="submit" value="Submit"/>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,5 @@
+<select name="{{div_type}}_district" class="form-control" onChange="return show_police_station(dist_id=this.value,div_type='{{div_type}}');">
+  {% for d in dist_data: %}
+  <option value="{{d.dist_id}}">{{d.dist_name}}</option>
+  {% endfor %}
+</select>

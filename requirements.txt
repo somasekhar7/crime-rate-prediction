@@ -1,0 +1,10 @@
+Flask
+Flask-WTF
+flask-mysql
+Flask-Mail
+passlib
+numpy
+scipy
+scikit-learn
+matplotlib
+flask_mysqldb

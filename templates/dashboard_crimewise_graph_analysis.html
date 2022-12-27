@@ -1,0 +1,123 @@
+{% if session['user_role'] == 'administrator':%}
+  {%  extends 'dashboard_layout.html' %}
+{% else: %}
+  {%  extends 'user_dashboard_layout.html' %}
+{% endif %}
+
+{% block dashboard_contents %}
+<div class="dashboard_crimewise_graph_analysis_contents">
+  <div class="table-responsive col-md-7">
+    <form name="crime_graph_generate_form" action="" method="post" role="form">
+    <table class="table table-hover" border="0">
+      <thead>
+        <tr>
+          <th>SELECT Crime for which Graph is to be generated :</th>
+          <td>
+              <select class="form-control" data-width="auto" name="crime_id_graph" title="Select Year" id="crime_id_graph">
+                {% for d in crime_data: %}
+                <option value="{{d['crime_id']}}">{{d['crime_type']}}</option>
+                {%  endfor%}
+              </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" class="btn-success btn-lg" name="crime_graph" value="See Graph">
+          </td>
+        </tr>
+      </thead>
+    </table>
+  </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    {% if total_crime !=0: %}
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="bg-primary">{{"2001 to 2010 "}}{{crime_name}} {{" Analysis"}}</thead>
+          <tr>
+            <th>Year</th>
+            <th>Total Number of Crime</th>
+            <th>Attention Level</th>
+         </tr>
+
+         {% for i,j in pair:%}
+         {% if max_value == j: %}
+           <tr class="alert-danger">
+         {% elif j>20 and j< max_value: %}
+          <tr class="alert-warning">
+          {% else %}
+          <tr class="alert-info">
+          {% endif %}
+            <td>{{i}}</td>
+            <td>{{j}}</td>
+            {% if max_value == j: %}
+              <td>High</td>
+            {% elif j< max_value and j>20: %}
+             <td>Moderate</td>
+             {% else %}
+             <td>Low</td>
+             {% endif %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-6">
+    {% if after_total_crime != 0: %}
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="bg-primary">{{"2010 to 2018 "}}{{crime_name}} {{" Analysis"}}</thead>
+          <tr>
+            <th>Year</th>
+            <th>Total Number of Crime</th>
+            <th>Attention Level</th>
+         </tr>
+
+         {% for i,j in after_pair:%}
+         {% if after_max_value == j: %}
+           <tr class="alert-danger">
+         {% elif j>20 and j< after_max_value: %}
+          <tr class="alert-warning">
+          {% else %}
+          <tr class="alert-info">
+          {% endif %}
+            <td>{{i}}</td>
+            <td>{{j}}</td>
+            {% if after_max_value == j: %}
+              <td>High</td>
+            {% elif j< after_max_value and j>20: %}
+             <td>Moderate</td>
+             {% else %}
+             <td>Low</td>
+             {% endif %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
+  </div>
+  </div>
+
+  <!--Conclusion----->
+  <div class="row">
+    {% if after_total_crime !=0%}
+    <h2>Conclusions:</h2>
+    <ul type="disc" >
+      <li class="bg-danger">
+        {% if after_total_crime > total_crime: %}
+          {{crime_name}} is increasing tremendously
+        {% else %}
+          {{crime_name}} is not increasing
+        {% endif %}
+      </li>
+      <li>There should be some prevention actions(s) take so that the rate of increasing of the above crime can be reduced.</li>
+      <li>Otherwise in future it may be increased in plenty.</li>
+    </ul>
+    {% endif %}
+  </div>
+
+
+{% endblock %}

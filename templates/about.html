@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block body  %}
+
+  <div class="container" style="background-color: #fef9e7 ">
+    <div class="row">
+      <h2 class="text-info">About Project</h2>
+      <p class="text-justify lead">
+        Crime rate is increasing now-a-days in many countries. In today’s world with such higher crime rate and brutal crime happening, there must be some protection against this crime. Here we introduced a system by which crime rate can be reduced. Crime data must be fed into the system. We introduced data mining algorithm to predict crime. K-means algorithm plays an important role in analyzing and predicting crimes. K-means algorithm will cluster co-offenders, collaboration and dissolution of organized crime groups, identifying various relevant crime patterns, hidden links, link prediction and statistical analysis of crime data. This system will prevent crime occurring in society. Crime data is analyzed which is stored in the database. Data mining algorithm will extract information and patterns from database. System will group crime. Clustering will be done based on places where crime occurred, gang who involved in crime and the timing crime took place. This will help to predict crime which will occur in future. Admin will enter crime details into the system which is required for prediction. Admin can view criminal historical data. Crime incident prediction depends mainly on the historical crime record and various geospatial and demographic information.
+      </p>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <h2 class="text-info">About Team Member</h2>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Member 1</h3>
+          </div>
+          <div class="panel-body">
+            <div class="placeholder col-md-11 col-md-offset-1">
+              <img src="C:\Users\HP\OneDrive\Pictures" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4 class="text-left text-justify"><span class="text-primary">Name</span> : <br>DARISI VENKATA VEERA SOMASEKHAR</h4>
+              <h4 class="text-left"><span class="text-primary">Email</span> : somasekhardarisi7@gmail.com</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Member 2</h3>
+          </div>
+          <div class="panel-body">
+            <div class="placeholder col-md-11 col-md-offset-1">
+              <img src="static/images/yogita.jpg" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4 class="text-left text-justify"><span class="text-primary">Name</span> : <br>Harshavardan</h4>
+              <h4 class="text-left"><span class="text-primary">Email</span> : <br>harsh96@gmail.com</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Member 3</h3>
+          </div>
+          <div class="panel-body">
+            <div class="placeholder col-md-11 col-md-offset-1">
+              <img src="static/images/somesh.jpg" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail">
+              <h4 class="text-left text-justify"><span class="text-primary">Name</span> : <br>Harshavardan R</h4>
+              <h4 class="text-left"><span class="text-primary">Email</span> : vardhan0563@gmail.com</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'includes/_footer.html' %}
+{% endblock %}

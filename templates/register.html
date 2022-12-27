@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+
+
+{% from "includes/_formvalidators.html" import render_field %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h1 class="panel-title">Register Here</h1>
+        </div>
+
+        <div class="panel-body">
+              <form method="POST" action="" role="form">
+                <fieldset>
+                    <div class="form-group">
+                      {{ render_field(form.addhar, class_='form-control') }}
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.email, class_='form-control') }}
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.name, class_='form-control') }}
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.mobile, class_='form-control') }}
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.password,class_='form-control')}}
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.confirm_password,class_='form-control')}}
+                    </div>
+                    <div class="form-group">
+                        <span>{{ render_field(form.accept_tos,class_='checkbox-control checkbox-inline')}}</span>
+                    </div>
+
+                    <p><input type="submit" class="btn btn-primary btn-lg btn-success btn-block" value="Register"></p>
+                </fieldset>
+
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% include 'includes/_footer.html' %}
+{% endblock  %}

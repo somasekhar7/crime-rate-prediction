@@ -1,0 +1,62 @@
+{% if session['user_role'] == 'administrator':%}
+  {%  extends 'dashboard_layout.html' %}
+{% else: %}
+  {%  extends 'user_dashboard_layout.html' %}
+{% endif %}
+
+{% block dashboard_contents %}
+
+<div class="row">
+  <form action="" method="post" role="form">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Cluster Analysis between Crime Type and Criminal age click</label>
+          <input type="submit" name="submit" value="See Graph Crime Type And Criminal Age" class="btn btn-lg btn-success"/>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Cluster Analysis between Crime Type and No of Times Crime click</label>
+          <input type="submit" name="submit" value="See Graph Crime Type And Number of Times" class="btn btn-lg btn-success"/>
+        </div>
+      </div>
+  </form>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table table-responsive">
+      {% if centroids != "": %}
+      <table class="table table-striped">
+        <tr class="alert alert-info">
+          <th>Cluster Number</th>
+          <th>Color of Cluster Elements</th>
+          <th>Number of Member in cluster</th>
+          <th>Centroids(Avg)</th>
+        </tr>
+        {% for k in range(length_cluster): %}
+        <tr>
+          <td>Cluster {{ k}}</td>
+          {% if size_cluster_color[k][1] == 'g.': %}
+          <td style="color:green">Green</td>
+          {% elif size_cluster_color[k][1] == 'r.':%}
+          <td style="color:red">Red</td>
+          {% elif size_cluster_color[k][1] == 'c.':%}
+          <td style="color:cyan">Cyan</td>
+          {% elif size_cluster_color[k][1] == 'm.':%}
+          <td style="color:magenta">Magenta</td>
+          {% elif size_cluster_color[k][1] == 'b.':%}
+          <td style="color:blue">Blue</td>
+          {% endif %}
+          <td>{{size_cluster_color[k][0]}}</td>
+          <td>{{ centroids[k][1] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+{%  endblock %}

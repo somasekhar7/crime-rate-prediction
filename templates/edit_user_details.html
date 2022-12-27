@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h1 class="panel-title">Edit Your Details</h1>
+      </div>
+      <div class="panel-body">
+        <form action="" method="post" role="form">
+          <div class="form-group">
+            <label class="col-form-label">Name</label>
+            <input type="text" name="name" value="{{user_data['name']}}" required class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input type="email" name="email" value="{{user_data['email']}}" required class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Mobile</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+              <input type="number" name="mobile" value="{{user_data['mobile']}}" required class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Aadhar</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window"></i></span>
+              <input type="number" name="aadhar" value="{{user_data['aadhar']}}" required class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="aria-label"></label>
+            <input type="submit" name="Update" value="Update" class="btn-lg btn-success"/>
+            <input type="button" name="cancel" value="Cancel" class="btn-lg btn-danger" onclick="window.location.assign('/profile')"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'includes/_footer.html' %}
+{% endblock %}

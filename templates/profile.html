@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="container">
+
+				<!-- Page Heading -->
+    <div class="row">
+      <div class="col-md-10">
+          <h3 class="page-header">
+              Profile <small>Details</small>
+          </h3>
+      </div>
+		</div>
+
+		<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-md-3 huge text-left">
+									<span >User ID:</span>
+								</div>
+								<div class="col-md-9 text-right">
+									<div class="huge text-left">{{session['userid']}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+              {% for i in data: %}
+							<div class="row">
+								<div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-7">
+
+					           <img class="img-circle img-fluid"  src="{{i['profile_pic']}}" width="250" height="250" >
+                   </div>
+                   <div class="col-md-5">
+                     <form class="form-group" action="" method="post" enctype="multipart/form-data">
+                       <div class="input-group">
+                         <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                         <label class="btn btn-default btn-file">Browse
+                         <input type="file" name="profile_pic" style="display:none;">
+                          </label>
+                       </div>
+                       <button class="btn btn-danger" type="submit" name="change_profile_pic">Change Profile Pic</button>
+                     </form>
+
+                  </div>
+                  </div>
+								</div>
+
+								<div class="table-responsive">
+									<table class="table table-striped">
+
+										<tr>
+											<td class="text-danger">User Name:</td>
+											<td class="text-success">{{i['name']}}</td>
+										</tr>
+                    <tr>
+											<td class="text-danger">Aadhar:</td>
+											<td class="text-success">{{i['aadhar']}}</td>
+										</tr>
+										<tr>
+											<td class="text-danger">Email:</td>
+											<td class="text-success">{{i['email']}}</td>
+										</tr>
+										<tr>
+											<td class="text-danger">Mobile:</td>
+											<td class="text-success">{{i['mobile']}}</td>
+										</tr>
+										<tr>
+											<td class="text-danger">Role:</td>
+											<td class="text-success">{{i['role']}}</td>
+										</tr>
+										<tr>
+											<td class="text-danger">Status:</td>
+											<td class="text-success">{{i['status']}}</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div class="button ">
+													<a href="edit_user_details" class="btn btn-success ">Edit Details</a>
+												</div>
+											</td>
+                      <td>
+												<div class="button ">
+													<a href="change_user_password" class="btn btn-danger ">Change Password</a>
+												</div>
+											</td>
+										</tr>
+
+									</table>
+								</div>
+
+							</div>
+
+						</div>
+            {%  endfor %}
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+  </div>
+  {% include 'includes/_footer.html' %}
+{% endblock %}

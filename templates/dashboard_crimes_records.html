@@ -1,0 +1,221 @@
+{% if session['user_role'] == 'administrator':%}
+  {%  extends 'dashboard_layout.html' %}
+{% else: %}
+  {%  extends 'user_dashboard_layout.html' %}
+{% endif %}
+
+{% block dashboard_contents %}
+<div class="container">
+  <form action="" method="POST" role="form">
+  <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Crime Deatils
+            </h3>
+          </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label>Crime Type:</label>
+                <select name="crime_type" class="form-control" required >
+                  <option value="">--Select Crime--</option>
+                  {% for d in crime_data: %}
+                    <option value="{{d.crime_id}}">{{d.crime_type}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Happened When:</label>
+                <input type="datetime-local" class="form-control" name="happened_when" placeholder="yyyy-mm-dd hh:mm:ss" required/>
+              </div>
+              <div class="form-group">
+                <label>Location:</label>
+                <textarea name="crime_location" class="form-control" required></textarea>
+              </div>
+              <div class="form-group">
+                <label>State:</label>
+                <select name="crime_state" class="form-control" onChange="return show_district(state_id=this.value,div_type='crime');"  required>
+                  <option value="">--Select State--</option>
+                  {% for sd in state_data: %}
+                  <option value="{{sd.state_id}}">{{sd.state_name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>District:</label>
+                <div id="crime_district">
+                <select name="crime_district" class="form-control">
+                  <option value="">--Select District--</option>
+                </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Police Station:</label>
+                <div id="crime_police_station">
+                <select name="crime_police_station" class="form-control">
+                  <option value="">--Select Police Station--</option>
+                </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-3">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Victim Details</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Victim Name:</label>
+              <input type="text" name="victim_name" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <label>Victim Father Name:</label>
+              <input type="text" name="victim_father_name" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <label>Age:</label>
+              <input type="number" name="victim_age"  maxlength="3" class="form-control" required/>
+            </div>
+            <div class="from-group">
+              <label>Gender:</label>
+              <input type="radio" name="victim_gender" value="Male"/> Male
+              <input type="radio" name="victim_gender" value="Female"/> Female
+            </div>
+            <div class="form-group">
+              <label>Address:</label>
+              <textarea name="victim_address" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+              <label>State:</label>
+              <select name="victim_state" class="form-control" onChange="return show_district(state_id=this.value,div_type='victim');">
+                <option value="">--Select State--</option>
+                {% for sd in state_data: %}
+                <option value="{{sd.state_id}}">{{sd.state_name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label>District:</label>
+              <div id="victim_district">
+              <select name="victim_district" class="form-control">
+                <option value="">--Select District--</option>
+              </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Police Station:</label>
+              <div id="victim_police_station">
+              <select name="victim_police_station" class="form-control">
+                <option value="">--Select Police Station--</option>
+              </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Criminal Details</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Criminal Name:</label>
+              <input type="text" name="criminal_name" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <label>Criminal Father Name:</label>
+              <input type="text" name="criminal_father_name" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <label>Age:</label>
+              <input type="number" name="criminal_age" maxlength="3" class="form-control" required/>
+            </div>
+            <div class="from-group">
+              <label>Gender:</label>
+              <input type="radio" name="criminal_gender" value="Male"/> Male
+              <input type="radio" name="criminal_gender" value="Female"/> Female
+            </div>
+            <div class="form-group">
+              <label>Address:</label>
+              <textarea name="criminal_address" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label>State:</label>
+              <select name="criminal_state" class="form-control" onChange="return show_district(state_id=this.value,div_type='criminal');">
+                <option value="">--Select State--</option>
+                {% for sd in state_data: %}
+                <option value="{{sd.state_id}}">{{sd.state_name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label>District:</label>
+              <div id="criminal_district">
+              <select name="criminal_district" class="form-control">
+                <option value="">--Select District--</option>
+              </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Police Station:</label>
+              <div id="criminal_police_station">
+              <select name="criminal_police_station" class="form-control">
+                <option value="">--Select Police Station--</option>
+              </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="form-group">
+    <input type="submit" name="submit" value="Submit" class="btn btn-lg btn-block btn-success"/>
+  </div>
+  </form>
+  <script type="text/javascript">
+    function show_district(state_id,div_type)
+    {
+      //alert(state_id);
+      var http = new XMLHttpRequest();
+      http.onreadystatechange = function()
+      {
+        //alert(http.readyState);
+        if(http.readyState == 4)
+        {
+          //alert(div_type+"_district");
+          document.getElementById(div_type+"_district").innerHTML = http.responseText;
+
+        }
+      }
+      http.open("POST","/show_district/"+state_id+"?div_type="+div_type,true);
+      http.send();
+      return true;
+
+    }
+
+    function show_police_station(dist_id,div_type)
+    {
+      //alert(state_id);
+      var http = new XMLHttpRequest();
+      http.onreadystatechange = function()
+      {
+        //alert(http.readyState);
+        if(http.readyState == 4)
+        {
+          //alert(div_type+"_district");
+          document.getElementById(div_type+"_police_station").innerHTML = http.responseText;
+
+        }
+      }
+      http.open("POST","/show_police_station/"+dist_id+"?div_type="+div_type,true);
+      http.send();
+      return true;
+    }
+
+  </script>
+</div>
+{% endblock %}
